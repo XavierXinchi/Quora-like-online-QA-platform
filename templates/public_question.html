@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %} 发布问答 {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}">
+{% endblock %}
+
+{% block body %}
+    {#    <div class="row">#}
+    {#        <h1> 我是发布问答 </h1>#}
+    {#        <div class="row">#}
+    {#            <div class="col"></div>#}
+    {#            <div class="col-6">#}
+    {#                <form action="">#}
+    {#                    <div class="">#}
+    {#                        <input type="text" name="title" class="user-box" placeholder="请输入标题">#}
+    {#                    </div>#}
+    {#                    <div class="user-box>">#}
+    {#                        <textarea name="content" class="user-box" rows="10" placeholder="请输入内容"></textarea>#}
+    {#                    </div>#}
+    {#                    <div class="user-box">#}
+    {#                        <button class="btn btn-primary">发布</button>#}
+    {#                    </div>#}
+    {#                </form>#}
+    {#            </div>#}
+    {#            <div class="col"></div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6">
+
+            <h1 style="text-align: center">发布问答</h1>
+            <form action="{{ url_for('qa.public_question') }}" method="POST">
+
+                <div class="form-group" style="margin-top: 30px;">
+                    <label for="text" class="control-label">标题</label>
+                    <input type="text" name="title" class="form-control" placeholder="请输入标题">
+                </div>
+
+                <div class="form-group>" style="margin-top: -5px;">
+                    <label for="content" class="control-label">内容</label>
+                    <textarea name="content" class="form-control" rows="15" placeholder="请输入内容"></textarea>
+                </div>
+
+                {% for message in get_flashed_messages() %}
+                    <div class="form-group">
+                        <div class="text-danger">{{ message }}</div>
+                    </div>
+                {% endfor %}
+
+                <div class="form-group" style="text-align: right">
+                    <button class="btn btn-primary">发布</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
